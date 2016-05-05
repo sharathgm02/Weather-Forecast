@@ -1,0 +1,251 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url('../images/bg.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+  	-o-background-size: cover;
+    background-size: cover;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.left {
+	text-align: left;
+}
+
+.red {
+    color: red;
+}
+
+.form-inline {
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.labelBlock {
+    text-align: left;
+    display: block;
+}
+
+.logo {
+    width:80px;
+    height:40px;
+    display: inline;
+}
+
+.weatherIcon {
+    width:100px;
+    height:100px;
+    display: inline;
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: rgba(0,0,0,0.3);
+  
+}
+
+.hide {
+    display: none;
+}
+
+label.errorMsg{
+	display: block;
+	color: red;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.lineClass {
+	color: white;
+	margin-top: 10px;
+}
+
+.tab1Top {
+	text-align: center;
+}
+
+.forecastResult {
+	display: none;
+}
+
+.summaryClass {
+	font-weight: bold;
+	color: white;
+}
+
+.tempClass {
+	font-weight: bold;
+	font-size: 40px;
+	color: white;
+}
+
+.degClass {
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+.blue{
+	color: blue;
+}
+
+.green{
+	color: green;
+}
+
+.topHeader {
+	background-color: #F27E7F;
+}
+
+.evenRow {
+	background-color: #F1DDDD;
+}
+
+.oddRow {
+	background-color: #F9F9F9;
+}
+
+.smallImg{
+	width:50px;
+    height:50px;
+	display: inline;
+}
+
+.tab2Table th{
+	text-align: center;
+	background-color: #3071A9;
+	color: white;
+}
+
+.tab2Table td {
+	text-align: center;
+	background-color: white;
+}
+
+.expandDiv table td{
+	background-color: #F2F2F2;
+}
+
+.expandDiv table th {
+	background-color: white;
+	color: black;
+}
+
+.divLink {
+	display: block;
+}
+
+.whiteText {
+	color: white;
+}
+
+#divDay1 {
+	background-color: #367DB5;
+}
+#divDay2 {
+	background-color: #EC4444;
+}
+#divDay3 {
+	background-color: #E68E4F;
+}
+#divDay4 {
+	background-color: #A7A439;
+}
+#divDay5 {
+	background-color: #9770A7;
+}
+#divDay6 {
+	background-color: #F37C7E;
+}
+#divDay7 {
+	background-color: #CE4571;
+}
+
+.marginDiv {
+	margin: 4px 4px 4px 4px;
+	min-width: 100px;
+}
+
+.blackBg {
+	background-color: black;
+}
+
+.largeImage {
+	height: 100px;
+	width: 100px;
+}
+
+.popupSummary {
+	font-size: 20px;
+}
+
+.modalHeader {
+	text-align: left;
+}
+
+.orange {
+	color: #FFA500;
+}
+
+#openMap {
+	height: 440px;
+	width: 100%;
+}
+
+.fbImgDiv {
+	text-align: right;
+}
+
+.fbImage {
+	height: 40px;
+	width: 40px;
+	display: inline;
+	cursor: pointer;
+}
+
+.backColor a {
+	background-color: #EDEDED;
+}
+
+.grey td{
+	background-color: #F2F2F2;
+}
+
+.imageSize {
+	width:60px;
+    height:60px;
+}
+
+@media (min-width: 768px){	
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1  {
+    width: 100%;
+    *width: 100%;
+	margin-left: 2px;
+	margin-right: 2px;
+  }
+}
+
+@media (min-width: 992px) {
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1 {
+    width: 11.4285714286%;
+    *width: 11.4285714286%;
+  }
+}
+
+@media (max-width: 768px){
+	.blackBg {
+		background-color: rgba(0,0,0,0);
+	}
+}
+
+

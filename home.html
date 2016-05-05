@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <style></style>
+		<script src="http://openlayers.org/api/OpenLayers.js"></script>
+	 	
+        <script type="text/javascript">
+            
+            window.onload = populateForm;
+            
+            function resetPage() {
+                window.location.href = "home.html";
+            }
+            
+            var statesObj = {"AL":"Alabama", "AK":"Alaska", "AZ":"Arizona", "AR":"Arkansas", "CA":"California", "CO":"Colorado", "CT":"Connecticut", "DE":"Delaware", "DC":"District Of Columbia", "FL":"Florida", "GA":"Georgia", "HI":"Hawaii", "ID":"Idaho", "IL":"Illinois", "IN":"Indiana", "IA":"Iowa", "KS":"Kansas", "KY":"Kentucky", "LA":"Louisiana", "ME":"Maine", "MD":"Maryland", "MA":"Massachusetts", "MI":"Michigan", "MN":"Minnesota", "MS":"Mississippi", "MO":"Missouri", "MT":"Montana", "NE":"Nebraska", "NV":"Nevada", "NH":"New Hampshire", "NJ":"New Jersey", "NM ":"New Mexico", "NY ":"New York", "NC":"North Carolina", "ND ":"North Dakota", "OH":"Ohio", "OK":"Oklahoma", "OR":"Oregon", "PA":"Pennsylvania", "RI ":"Rhode Island", "SC":"South Carolina", "SD":"South Dakota", "TN ":"Tennessee", "TX":"Texas", "UT":"Utah", "VT ":"Vermont", "VA":"Virginia", "WA":"Washington", "WV":"West Virginia", "WI":"Wisconsin", "WY":"Wyoming"};
+            
+            function populateForm(){
+                var select = document.getElementById("state");
+                for(var key in statesObj){
+                    var optionText = statesObj[key];
+                    var option = document.createElement("option");
+                    option.textContent = optionText;
+                    option.value = key;
+                    select.appendChild(option);
+                }
+            }
+        </script>
+        <title>Forecast Search</title>
+</head>
+<body>
+    <div id="fb-root"></div>
+    <div class="container">
+		<div class="row">
+        	<div class="col-xs-12"><h1 class="alignCenter">Forecast Search</h1></div>
+    	</div>
+        <div class="row transbox">
+            <div class="col-md-12">
+        
+                <form method="get" id="forecastForm" class="form-inline">
+                    
+                    <div class="form-group">
+                        <label class="labelBlock" for="address">Street Address:<span class="red">*</span></label>
+                        <input name="street" class="form-control" type="text" id="address" placeholder="Enter street address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="labelBlock" for="city">City:<span class="red">*</span></label>
+                        <input name="city" class="form-control" type="text" id="city" placeholder="Enter the city name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="labelBlock" for="state">State:<span class="red">*</span></label>
+                        <select name="state" class="form-control" id="state">
+							<option selected="selected" disabled="disabled">Select your state...</option>
+						</select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="labelBlock">Degree:<span class="red">*</span></label>
+                        <label class="radio-inline">
+                            <input checked name="temperature" id="temperature" type="radio" value="us"> Fahrenheit
+                        </label>
+                        <label class="radio-inline">
+                            <input name="temperature" type="radio" value="si"> Celsius
+                        </label>
+                    </div>
+					
+                    <div class="form-group btn-toolbar pull-right">
+                        <br><br>
+                        <button name="submit" type="submit" value="submit" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-search"></span> Search 
+                        </button>
+						<button type="button" class="btn btn-default btn-sm" onclick="return resetPage();">
+                            <span class="glyphicon glyphicon-refresh"></span> Clear
+                        </button><br><br>
+                        <div><small>Powered by:</small><a target="_blank" href="http://www.forecast.io"> <img class="img-responsive logo" src="images/forecast_logo.png"></a></div>
+                    </div>
+                                
+                </form>
+
+            </div>
+        </div><!-- row -->
+		<hr class="lineClass">
+    </div><!-- content container -->
+	
+	<div class="container forecastResult">
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="nav nav-pills backColor">
+					<li class="active" role="presentation"><a role="tab" data-toggle="tab" href="#current">Right Now</a></li>
+					<li role="presentation"><a role="tab" data-toggle="tab" href="#daily">Next 24 Hours</a></li>
+					<li role="presentation"><a role="tab" data-toggle="tab" href="#weekly">Next 7 Days</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="tab-content col-sm-12">
+				<div role="tabpanel" class="tab-pane active" id="current">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-sm-12">
+									<table class="table">
+										<tr class="topHeader">
+											<td colspan=2>
+												<div class="tab1Top col-sm-6">
+													<img id="weatherLogo" class="weatherIcon">
+												</div>
+												<div class="tab1Top col-sm-6">
+													<span class="summaryClass" id="summary"></span><br>
+													<span class="tempClass" id="tempValue"></span><br>
+													<span class="rangeClass" id="lowHigh"></span><span class="pull-right fbImgDiv"><img id="fbPost" class="fbImage" src="images/fb_icon.png"></span>
+												</div>
+											</td>
+										</tr>
+										<tr class="oddRow"><td>Precipitation</td><td id="precep"></td></tr>
+										<tr class="evenRow"><td>Chance of Rain</td><td id="rainChance"></td></tr>
+										<tr class="oddRow"><td>Wind Speed</td><td id="speed"></td></tr>
+										<tr class="evenRow"><td>Dew Point</td><td id="dewPoint"></td></tr>
+										<tr class="oddRow"><td>Humidity</td><td id="humidity"></td></tr>
+										<tr class="evenRow"><td>Visibility</td><td id="visibility"></td></tr>
+										<tr class="oddRow"><td>Sunrise</td><td id="sunrise"></td></tr>
+										<tr class="evenRow"><td>Sunset</td><td id="sunset"></td></tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-sm-12">
+									<div id="openMap"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div role="tabpanel" class="tab-pane" id="daily">
+					<div class="row">
+						<div class="col-sm-12">
+							<table class="table tab2Table">
+								
+							</table>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane blackBg" id="weekly">
+						<div class="col-lg-offset-1 col-md-offset-1">
+							<div class="row marginDiv seven-cols alignCenter btn-group" id="tab3Data">
+								
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="fb-root"></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+	<script  src="//connect.facebook.net/en_US/all.js"></script>
+    <script src="js/script.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/moment-timezone-with-data.js"></script>
+
+</body>
+</html>
